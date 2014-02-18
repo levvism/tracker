@@ -3,4 +3,4 @@ The Tracker
 
 DIM3 Tracker Project
 
-Kinda like trello but less pretty
+Kinda like https://trello.com/ but less pretty
