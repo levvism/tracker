@@ -6,12 +6,15 @@ from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'the_tracker.views.home', name='home'),
-    # url(r'^the_tracker/', include('the_tracker.foo.urls')),
+    # url(r'^$', 'tracker_project.views.home', name='home'),
+    # url(r'^tracker_project/', include('tracker_project.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
+    
+    url(r'^webapp/', include('webapp.urls')),
 )
+

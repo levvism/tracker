@@ -1,27 +1,31 @@
-# Django settings for the_tracker project.
-
+# Django settings for tracker_project project.
 import os
+
+# paths to enlightenment
+SETTINGS_DIR = os.path.dirname(__file__)
+PROJECT_PATH = os.path.join(SETTINGS_DIR, os.pardir)
+PROJECT_PATH = os.path.abspath(PROJECT_PATH)
+TEMPLATE_PATH = os.path.join(PROJECT_PATH, 'templates')
+STATIC_PATH = os.path.join(PROJECT_PATH, 'static')
+DATABASE_PATH = os.path.join(PROJECT_PATH, 'webapp.db')
+
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-	('lewismcgeechan', 'levvis.m@googlemail.com')
-	('antonbelev', 'belevanton@gmail.com'),
     # ('Your Name', 'your_email@example.com'),
 )
 
 MANAGERS = ADMINS
 
-
-DATABASE_PATH = os.path.join(PROJECT_PATH, 'tracker.db')
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': DATABASE_PATH,
-    }
+        'ENGINE': 'django.db.backends.sqlite3', 
+        'NAME': DATABASE_PATH,         
+	  }
 }
+
 
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
@@ -66,15 +70,15 @@ MEDIA_URL = ''
 # Example: "/var/www/example.com/static/"
 STATIC_ROOT = ''
 
+
+
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
 STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    # Put strings here, like "/home/html/static" or "C:/www/django/static".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+    STATIC_PATH
 )
 
 # List of finder classes that know how to find static files in
@@ -86,7 +90,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 'q960fhlp^fhc#@d2of@4qx7=(8gt$p5sm_inm#_qz5_hf8s31%'
+SECRET_KEY = '5vr5x*0-orbu6tnh5ffbqk_-!b0teofcad^-3&bi8wfjvb1su*'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -105,15 +109,18 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'the_tracker.urls'
+ROOT_URLCONF = 'tracker_project.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'the_tracker.wsgi.application'
+WSGI_APPLICATION = 'tracker_project.wsgi.application'
+
+
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    TEMPLATE_PATH,
 )
 
 INSTALLED_APPS = (
@@ -123,10 +130,10 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
+    'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'webapp',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
