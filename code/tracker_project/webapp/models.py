@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 #this may need extended to offer more features/details
 class Project(models.Model):
     name = models.CharField(max_length=128, unique=True)
+    description = models.CharField(max_length=256)
     #Project will also have list of developers represented by another model
 
     def __unicode__(self):
@@ -15,9 +16,9 @@ class Project(models.Model):
 class Task(models.Model):
     project = models.ForeignKey(Project)
     title = models.CharField(max_length=32)
-    text = models.CharField(max_length=256)
-    classification = models.CharField(max_length=1)
-    priority = models.IntegerField()
+    description = models.CharField(max_length=256)
+    classification = models.CharField(max_length=1) # refers to the MoSCoW priority of the task
+    priority = models.IntegerField() # integer priority of task within MoSCoW classification
 
     def __unicode__(self):
         return self.title
@@ -36,7 +37,7 @@ class UserProfile(models.Model):
         
 # this lets us map users to projects, creating a list of people working on a certain project        
 class UsersProjects(models.Model):
-	user = models.ForeignKey(User)
+	user = models.ForeignKey(UserProfile)
 	project = models.ForeignKey(Project)
 
 def __unicode__(self):
