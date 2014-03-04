@@ -2,13 +2,20 @@
 <html>
 
     <head>
-        <title>Rango</title>
+        <title>Webapp</title>
     </head>
 
     <body>
-        <h1>Rango says...</h1>
-        hello world! <strong>{{ boldmessage }}</strong><br />
-        <a href="/rango/about/">About</a><br />
+
+        	{% if user.is_authenticated %}
+		<h1>Tracker says... hello {{ user.username }}!</h1>
+		{% else %}
+		<h1>Tracker says... hello world!</h1>
+		{% endif %}
+
+        <a href="/webapp/about/">About</a><br />
+        <a href="/rango/register/">Register Here</a>
+        <a href="/rango/login/">Login</a>
     </body>
 
 </html>

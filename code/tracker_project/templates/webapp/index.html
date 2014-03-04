@@ -6,9 +6,22 @@
     </head>
 
     <body>
-        <h1>Webapp says...</h1>
-        hello world! <strong>{{ boldmessage }}</strong><br />
-        <a href="/webapp/about/">About</a><br />
+
+        	{% if user.is_authenticated %}
+		<h1>Tracker says... hello {{ user.username }}!</h1>
+		{% else %}
+		<h1>Tracker says... hello world!</h1>
+		{% endif %}
+
+		{% if user.is_authenticated %}
+		<a href="/webapp/logout/">Logout</a><br />
+		{% else %}
+		<a href="/webapp/register/">Register Here</a><br />
+		<a href="/webapp/login/">Login</a><br />
+		{% endif %}
+
+		<a href="/webapp/about/">About</a><br/>
+
     </body>
 
 </html>

@@ -1,6 +1,9 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext
 from django.shortcuts import render_to_response
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from webapp.forms import UserForm, UserProfileForm
 
 def index(request):
 	context = RequestContext(request)
@@ -9,7 +12,7 @@ def index(request):
 	
 	return render_to_response('webapp/index.html', context_dict, context)
     
-    
+@login_required   
 def about(request):
 	context = RequestContext(request)
 	
@@ -22,9 +25,9 @@ def about(request):
 def register(request):
     # Request the context.
     context = RequestContext(request)
-    cat_list = get_category_list()
+
     context_dict = {}
-    context_dict['cat_list'] = cat_list
+
     # Boolean telling us whether registration was successful or not.
     # Initially False; presume it was a failure until proven otherwise!
     registered = False
@@ -84,9 +87,8 @@ def register(request):
 def user_login(request):
     # Obtain our request's context.
     context = RequestContext(request)
-    cat_list = get_category_list()
+
     context_dict = {}
-    context_dict['cat_list'] = cat_list
 
     # If HTTP POST, pull out form data and process it.
     if request.method == 'POST':
