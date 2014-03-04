@@ -1,14 +1,22 @@
-<!DOCTYPE html>
-<html>
+{% extends 'webapp/base.html' %}
 
-    <head>
-        <title>Webapp</title>
-    </head>
+{% load staticfiles %}
 
-    <body>
-        <h1>Webapp says...</h1>
-        hello world! <strong>{{ boldmessage }}</strong><br />
-        <a href="/webapp/">Index</a><br />
-    </body>
+{% block title %}{{ About }}{% endblock %}
 
-</html>
+{% block body_block %}
+<div class="hero-unit">
+
+        <h1>About says...</h1>
+        this is the about page <strong>{{ boldmessage }}</strong><br />
+ 
+        Here's a picture of a dev!<br />
+    		<img src="{% static 'lewis.jpg' %}" alt="Picture of dev" />
+
+</div>  
+{% endblock %}
+
+
+
+
+

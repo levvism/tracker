@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Register to Tracker</title>
-    </head>
+{% extends 'webapp/base.html' %}
 
-    <body>
-        <h1>Register with Tracker</h1>
+{% block title %} Register {% endblock %}
+
+{% block body_block %}
 
         {% if registered %}
         Tracker says: <strong>thank you for registering!</strong>
@@ -28,5 +25,5 @@
             <input type="submit" name="submit" value="Register" />
         </form>
         {% endif %}
-    </body>
-</html>
+
+{% endblock %}

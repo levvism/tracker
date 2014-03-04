@@ -1,21 +1,15 @@
-<!DOCTYPE html>
-<html>
+{% extends 'webapp/base.html' %}
 
-    <head>
-        <title>Webapp</title>
-    </head>
+{% block title %}{{ Home }}{% endblock %}
 
-    <body>
-
+{% block body_block %}
+<div class="hero-unit">
         	{% if user.is_authenticated %}
 		<h1>Tracker says... hello {{ user.username }}!</h1>
 		{% else %}
 		<h1>Tracker says... hello world!</h1>
 		{% endif %}
 
-        <a href="/webapp/about/">About</a><br />
-        <a href="/rango/register/">Register Here</a>
-        <a href="/rango/login/">Login</a>
-    </body>
+</div>
 
-</html>
+{% endblock %}

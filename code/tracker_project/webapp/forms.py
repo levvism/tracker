@@ -5,6 +5,8 @@ from webapp.models import UserProfile
 
 class UserForm(forms.ModelForm):
     username = forms.CharField(help_text="Please enter a username.")
+    firstname = forms.CharField(help_text="Please enter first name.")
+    lastname = forms.CharField(help_text="Please enter last name.")
     email = forms.CharField(help_text="Please enter your email.")
     password = forms.CharField(widget=forms.PasswordInput(), help_text="Please enter a password.")
 

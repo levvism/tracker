@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Tracker</title>
-    </head>
+{% extends 'webapp/base.html' %}
 
-    <body>
-        <h1>Login to Tracker</h1>
+{% block title %} Login {% endblock %}
 
+{% block body_block %}
+<div class="hero-unit">
         <form id="login_form" method="post" action="/webapp/login/">
             {% csrf_token %}
             Username: <input type="text" name="username" value="" size="50" />
@@ -16,7 +13,6 @@
 
             <input type="submit" value="submit" />
         </form>
-
-    </body>
-</html>
+</div>  
+{% endblock %}
 
