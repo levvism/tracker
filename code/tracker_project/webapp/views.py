@@ -3,7 +3,7 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from webapp.forms import UserForm, UserProfileForm
+from forms import UserForm, UserProfileForm
 
 def index(request):
 	context = RequestContext(request)
