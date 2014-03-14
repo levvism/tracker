@@ -4,12 +4,12 @@
 
 {% block body_block %}
 <div class="hero-unit">
-        	{% if user.is_authenticated %}
+        {% if user.is_authenticated %}
 		<h1>Tracker says... hello {{ user.username }}!</h1>
 		{% else %}
 		<h1>Tracker says... hello world!</h1>
 		{% endif %}
-
+		<a href="/webapp/newproject/" class="btn btn-info navbar-btn">New Project</a>
 </div>
 
 {% endblock %}

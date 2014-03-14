@@ -122,7 +122,6 @@ def user_login(request):
         
         
         
-        
 # Only allow logged in users to logout - add the @login_required decorator!
 @login_required
 def user_logout(request):
@@ -131,5 +130,10 @@ def user_logout(request):
 
     # Take the user back to the homepage.
     return HttpResponseRedirect('/webapp/')
+   
+def new_project(request):
+    context = RequestContext(request)
+    
+    return render_to_response('webapp/create_project.html', {}, context)
     
     
