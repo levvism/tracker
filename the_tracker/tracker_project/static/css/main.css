@@ -18,9 +18,35 @@
 	margin-bottom: 3px;
 }
 
+.divRequirement
+{
+	width: 60%;
+}
 
+.table-bordered
+{
+	border:2px solid black;
+	width: 60%;
+}
 
+.must_have
+{
+	background: #FF3333;
+	bold;
+}
 
+.should_have
+{
+	background: #99FF99;
+}
+.would_have
+{
+	background: #99FFFF;
+}
+.new_req
+{
+	background: #FFFFCC;
+}
 
 
 
