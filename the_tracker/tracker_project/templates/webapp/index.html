@@ -1,0 +1,15 @@
+{% extends 'webapp/base.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block body_block %}
+<div class="hero-unit">
+        {% if user.is_authenticated %}
+		<h1>Tracker says... hello {{ user.username }}!</h1>
+		{% else %}
+		<h1>Tracker says... hello world!</h1>
+		{% endif %}
+		<a href="/newproject/" class="btn btn-info navbar-btn">New Project</a>
+</div>
+
+{% endblock %}
