@@ -9,7 +9,7 @@ TEMPLATE_PATH = os.path.join(PROJECT_PATH, 'templates')
 STATIC_PATH = os.path.join(PROJECT_PATH, 'static')
 DATABASE_PATH = os.path.join(PROJECT_PATH, 'webapp.db')
 
-LOGIN_URL = '/webapp/login/'
+LOGIN_URL = '/login/'
 
 
 DEBUG = True

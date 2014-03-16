@@ -105,7 +105,7 @@ def user_login(request):
             # If so, log the user in and redirect them to the homepage.
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect('/webapp/')
+                return HttpResponseRedirect('/')
             # The account is inactive; tell by adding variable to the template context.
             else:
                 context_dict['disabled_account'] = True
@@ -129,11 +129,16 @@ def user_logout(request):
     logout(request)
 
     # Take the user back to the homepage.
-    return HttpResponseRedirect('/webapp/')
+    return HttpResponseRedirect('/')
    
 def new_project(request):
     context = RequestContext(request)
     
     return render_to_response('webapp/create_project.html', {}, context)
+   
+def project(request):
+    context = RequestContext(request)
+    
+    return render_to_response('webapp/project.html', {}, context)
     
     

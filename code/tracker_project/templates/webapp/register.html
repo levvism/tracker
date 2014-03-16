@@ -6,11 +6,11 @@
 
         {% if registered %}
         Tracker says: <strong>thank you for registering!</strong>
-        <a href="/webapp/">Return to the homepage.</a><br />
+        <a href="/">Return to the homepage.</a><br />
         {% else %}
         Tracker says: <strong>register here!</strong><br />
 
-        <form id="user_form" method="post" action="/webapp/register/"
+        <form id="user_form" method="post" action="/register/"
                 enctype="multipart/form-data">
 
             {% csrf_token %}

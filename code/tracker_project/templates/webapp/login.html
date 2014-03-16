@@ -4,15 +4,15 @@
 
 {% block body_block %}
 <div class="hero-unit">
-        <form id="login_form" method="post" action="/webapp/login/">
+        <form id="login_form" method="post" action="/login/">
             {% csrf_token %}
             Username: <input type="text" name="username" value="" size="50" />
             <br />
             Password: <input type="password" name="password" value="" size="50" />
             <br />
 
-            <input type="submit" class="btn btn-info navbar-btn" value="submit" />
+            <input type="submit" class="btn btn-info navbar-btn" value="Login" />
         </form>
-</div>  
+</div>
 {% endblock %}
 
