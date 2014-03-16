@@ -4,7 +4,7 @@
 
 {% block body_block %}
 <div class="divCreateRequirement">
-        <form id="task_form" method="post" action="/requirement/add_requirement/">
+        <form id="task_form" method="post" action="/project/add_task/">
 
             {% csrf_token %}
             {% for hidden in form.hidden_fields %}

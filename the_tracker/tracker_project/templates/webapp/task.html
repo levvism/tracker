@@ -1,0 +1,15 @@
+{% extends 'webapp/base.html' %}
+
+{% block title %} Tasks {% endblock %}
+
+{% block body_block %}
+	{% if tasks %}
+        <ul>
+            {% for task in tasks %}
+            <li>{{ task.title }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <strong>There are no tasks present.</strong>
+    {% endif %}
+{% endblock %}
