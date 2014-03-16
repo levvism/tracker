@@ -153,8 +153,26 @@ def project(request):
     return render_to_response('webapp/project_home_page.html', {}, context)
 
 def requirement(request):
-	context = RequestContext(request)    
-	return render_to_response('webapp/requirements.html', {}, context) 
+	context = RequestContext(request)
+		
+	
+	return render_to_response('webapp/requirements.html', {}, context)
+	
+def task(request):
+	context = RequestContext(request)	
+	projectid = int(request.GET.get('projectid', '0'));
+	
+	tasks = []
+	context_dict = {}
+	if (projectid != 0):
+		TaskObjects = Task.objects.all();
+		for t in TaskObjects:
+			if (t.project.id == projectid):
+				tasks.append(t)		
+		
+	context_dict["tasks"] = tasks
+	
+	return render_to_response('webapp/task.html', context_dict, context)
 
 def add_task(request):
     # Get the context from the request.

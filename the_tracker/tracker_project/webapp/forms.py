@@ -28,7 +28,7 @@ class TaskForm(forms.ModelForm):
     title = forms.CharField(max_length=128, help_text="Please enter the requirement: ")
     description = forms.CharField(max_length=128, help_text="Description of the requirement: ")
     classification = forms.CharField(max_length=128, help_text="MoSCoW classification of the requirement.")
-    priority = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
+    priority = forms.IntegerField(help_text="Priority of the requirement.")
 
     # An inline class to provide additional information on the form.
     class Meta:
