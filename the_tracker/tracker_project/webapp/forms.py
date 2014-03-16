@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from webapp.models import UserProfile, Task
+from webapp.models import UserProfile, Task, Project
 
 
 class UserForm(forms.ModelForm):
@@ -34,3 +34,11 @@ class TaskForm(forms.ModelForm):
     class Meta:
         # Provide an association between the ModelForm and a model
         model = Task
+        
+class new_project_form(forms.ModelForm):
+    name = forms.CharField(max_length=128, help_text="Please enter project name: ", widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Project name'}))
+    description = forms.CharField(max_length=256, help_text="Please enter project description: ", widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Project description'}))
+
+    class Meta:
+        # Provide an association between the ModelForm and a model
+        model = Project

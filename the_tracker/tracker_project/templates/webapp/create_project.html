@@ -3,7 +3,21 @@
 {% block title %} Create Project {% endblock %}
 
 {% block body_block %}
-<div class="hero-unit">
-	
-</div>  
+<div class="divNewProject">
+	<form id="new_porject_form" method="post" action="/newproject/">
+		{% csrf_token %}
+        {% for hidden in form.hidden_fields %}
+            {{ hidden }}
+        {% endfor %}
+
+        {% for field in form.visible_fields %}
+            {{ field.errors }}
+            <div class="clear"></div>            
+            <span class="label label-default">{{ field.help_text}}</span>
+            {{ field }}
+        {% endfor %}
+
+        <input type="submit" name="submit" class="btn btn-info navbar-btn" value="Create Project" />
+	</form>
+</div>
 {% endblock %}
