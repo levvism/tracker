@@ -9,6 +9,8 @@ urlpatterns = patterns('',
         url(r'^logout/$', views.user_logout, name='logout'),
         url(r'^newproject/$', views.new_project, name='newproject'),
         url(r'^project/$', views.project, name='project'),
+        url(r'^requirements/$', views.requirement, name='requirement'),
+        url(r'^add_requirement/$', views.add_task, name='add_task'),
 )
         
 

@@ -1,0 +1,23 @@
+{% extends 'webapp/base.html' %}
+
+{% block title %} Add a requirement {% endblock %}
+
+{% block body_block %}
+<div class="divCreateRequirement">
+        <form id="task_form" method="post" action="/requirement/add_requirement/">
+
+            {% csrf_token %}
+            {% for hidden in form.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
+
+            {% for field in form.visible_fields %}
+                {{ field.errors }}
+                {{ field.help_text}}
+                {{ field }}
+            {% endfor %}
+
+            <input type="submit" name="submit" value="Create Requirement" />
+        </form>
+</div>
+{% endblock %}

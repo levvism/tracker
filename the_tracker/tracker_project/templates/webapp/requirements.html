@@ -1,0 +1,22 @@
+{% extends 'webapp/base.html' %}
+
+{% block title %} Requirements {% endblock %}
+
+{% block body_block %}
+<div class="divRequirement">
+        <form id="login_form" method="post" action="/requirements/">
+            <h1>Requirements</h1>
+            <table class="table table-bordered">
+              <td class="must_have"><b>MUST HAVE</b></td>         	
+              <td class="should_have"><b>SHOULD HAVE</b></td>
+              <td class="would_have"><b>WOULD BE NICE TO HAVE</b></td>
+              <tr class="new_req">
+				<td>Bla</td>
+				<td>Neh</td>
+				<td>LOL</td>
+			  </tr>
+            </table>
+            <a href="/add_requirement/" class="btn btn-info navbar-btn">Add a requirement</a>
+        </form>
+</div>
+{% endblock %}
