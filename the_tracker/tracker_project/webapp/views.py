@@ -4,11 +4,23 @@ from django.shortcuts import render_to_response
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from forms import UserForm, UserProfileForm
+from models import Project, Task, UserProfile, UsersProjects
 
 def index(request):
 	context = RequestContext(request)
 	
-	context_dict = {'boldmessage': "I am bold font from the context"}
+	user_projects = []
+	context_dict = {}	
+	
+	if request.user.is_authenticated():
+		UsersprojectsObjects = UsersProjects.objects.all()
+		
+		for up in UsersprojectsObjects:
+			if (up.user.id == request.user.id):
+				user_projects.append(up.project)		
+		
+		context_dict["projects"] = user_projects
+		
 	
 	return render_to_response('webapp/index.html', context_dict, context)
     
@@ -16,7 +28,7 @@ def index(request):
 def about(request):
 	context = RequestContext(request)
 	
-	context_dict = {'boldmessage': "I am bold font from the context"}
+	context_dict = {}
 	
 	return render_to_response('webapp/about.html', context_dict, context)
 	
@@ -139,6 +151,6 @@ def new_project(request):
 def project(request):
     context = RequestContext(request)
     
-    return render_to_response('webapp/project.html', {}, context)
+    return render_to_response('webapp/project_home_page.html', {}, context)
     
     

@@ -5,7 +5,10 @@
 {% block body_block %}
 <div class="hero-unit">
         {% if user.is_authenticated %}
-		<h1>Tracker says... hello {{ user.username }}!</h1>
+		<h1>Tracker says... hello {{ user.username }}!</h1>	
+		<div class="project_conteiner">	
+			{% include "webapp/projects.html" %}
+		</div>
 		{% else %}
 		<h1>Tracker says... hello world!</h1>
 		{% endif %}

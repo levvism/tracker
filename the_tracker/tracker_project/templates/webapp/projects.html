@@ -1,0 +1,16 @@
+
+{% if user.is_authenticated %}
+	{% if projects %}
+		<div class="well">
+		    <ul class="list-group">
+        {% for project in projects %}
+	        <li class="list-group-item"><a href="/project?id={{project.id}}">{{project.name}}</a></li>                         
+        {% endfor %}
+        	</ul>
+		</div> 
+    {% else %}
+        <strong>No projects to be displayed.</strong>
+    {% endif %}	
+{% else %}
+	<strong>No projects to be displayed.</strong>
+{% endif %}
