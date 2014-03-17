@@ -224,7 +224,7 @@ def add_task(request):
     # Get the context from the request.
     context = RequestContext(request)
     projectid = int(request.GET.get('projectid', '0'))
-    
+    context_dict = {}
     if request.method == 'POST':
         form = TaskForm(request.POST)
 
@@ -239,10 +239,14 @@ def add_task(request):
     else:
         # If the request was not a POST, display the form to enter details.
         form = TaskForm()
+	
+	context_dict["form"] = form
+	context_dict["projectid"] = projectid
 
+	
     # Bad form (or form details), no form supplied...
     # Render the form with error messages (if any).
-    return render_to_response('webapp/add_requirement.html', {'form': form, 'projectid': projectid}, context)
+    return render_to_response('webapp/add_requirement.html', context_dict, context)
   
 @login_required
 def ajax_drag_and_drop_task(request):
@@ -262,8 +266,10 @@ def edit_task(request):
     # Get the context from the request.
     context = RequestContext(request)
     taskid = int(request.GET.get('taskid', '0'))
+    projectid = int(request.GET.get('projectid', '0'))
     task = get_object_or_404(Task, pk=taskid)
-    
+    context_dict = {}
+    context_dict["projectid"] = projectid
     
     # A HTTP POST?
     if request.method == 'POST':
@@ -273,7 +279,7 @@ def edit_task(request):
         if form.is_valid():
             # Save the new category to the database.
             form.save(commit=True)
-            return HttpResponseRedirect('/project/task?taskid=' + str(taskid))
+            return HttpResponseRedirect('/project/task?taskid=' + str(taskid), context_dict)
         else:
             # The supplied form contained errors - just print them to the terminal.
             print form.errors
@@ -283,7 +289,9 @@ def edit_task(request):
 
     # Bad form (or form details), no form supplied...
     # Render the form with error messages (if any).
-    return render_to_response('webapp/edit_task.html', {'form': form, 'taskid': taskid}, context)
+    	context_dict["form"] = form
+	context_dict["taskid"] = taskid
+    return render_to_response('webapp/edit_task.html', context_dict, context)
 
 def history_task(request):
     context = RequestContext(request)

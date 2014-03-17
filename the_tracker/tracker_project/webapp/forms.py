@@ -62,9 +62,8 @@ class new_project_form(forms.ModelForm):
 class EditForm(forms.ModelForm):
     title = forms.CharField(max_length=128, help_text="Edit the title of the task: ", widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Title'}))
     description = forms.CharField(max_length=128, help_text="Edit the description of the task: ", widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Description'}))
-    classification = forms.CharField(max_length=128, help_text="Edit MoSCoW classification of the task.", widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'MoSCoW'}))
-    priority = forms.IntegerField(help_text="Edit the priority of the task.", widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Priority'}))
-
+    classification = forms.ChoiceField(help_text=" Edit MoSCoW classification of the requirement.", choices=MOSCOW_CHOICE, widget=forms.Select(attrs={'class': 'form-control', 'placeholder':'MoSCoW'}))
+    priority = forms.ChoiceField(help_text=" Edit priority of the requirement.", choices=PRIORITY_CHOICE, widget=forms.Select(attrs={'class': 'form-control', 'placeholder':'Priority'}))
     # An inline class to provide additional information on the form.
     class Meta:
         # Provide an association between the ModelForm and a model
