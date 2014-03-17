@@ -9,9 +9,9 @@ urlpatterns = patterns('',
         url(r'^logout/$', views.user_logout, name='logout'),
         url(r'^newproject/$', views.new_project, name='newproject'),
         url(r'^project/$', views.project, name='project'),
-        url(r'^project/all_tasks/$', views.requirement, name='all_task'),
-        url(r'^project/add_task/$', views.add_task, name='add_task'),
-        url(r'^project/task/$', views.task, name='task'),
+        url(r'^project/view_tasks$', views.view_tasks, name='all_task'),
+        url(r'^project/add_task$', views.add_task, name='add_task'),
+        url(r'^project/task$', views.task, name='task'),
 )
         
 

@@ -151,7 +151,7 @@ def new_project(request):
 
             # Now call the index() view.
             # The user will be shown the homepage.
-            return project(request)
+            return index(request)
         else:
             # The supplied form contained errors - just print them to the terminal.
             print form.errors
@@ -167,13 +167,12 @@ def project(request):
     context = RequestContext(request)
     return render_to_response('webapp/project_home_page.html', {}, context)
 
-def requirement(request):
-	context = RequestContext(request)
-		
-	
-	return render_to_response('webapp/requirements.html', {}, context)
-	
 def task(request):
+	context = RequestContext(request)	
+	
+	return render_to_response('webapp/task.html', {}, context)
+	
+def view_tasks(request):
 	context = RequestContext(request)	
 	projectid = int(request.GET.get('projectid', '0'));
 	
@@ -186,8 +185,9 @@ def task(request):
 				tasks.append(t)		
 		
 	context_dict["tasks"] = tasks
+	context_dict["projectid"] = projectid
 	
-	return render_to_response('webapp/task.html', context_dict, context)
+	return render_to_response('webapp/view_tasks.html', context_dict, context)
 
 def add_task(request):
     # Get the context from the request.
@@ -204,7 +204,7 @@ def add_task(request):
 
             # Now call the index() view.
             # The user will be shown the homepage.
-            return requirement(request)
+            return task(request)
         else:
             # The supplied form contained errors - just print them to the terminal.
             print form.errors

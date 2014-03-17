@@ -1,15 +1,9 @@
 {% extends 'webapp/base.html' %}
 
-{% block title %} Tasks {% endblock %}
+{% block title %} Task Page {% endblock %}
 
 {% block body_block %}
-	{% if tasks %}
-        <ul>
-            {% for task in tasks %}
-            <li>{{ task.title }}</li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <strong>There are no tasks present.</strong>
-    {% endif %}
+<div class="hero-unit divTaskPage">
+		<h3><span class="label label-info">Task name</span></h3>
+</div>
 {% endblock %}
