@@ -210,7 +210,7 @@ def view_tasks(request):
 	tasks = []
 	context_dict = {}
 	if (projectid != 0):
-		TaskObjects = Task.objects.all();
+		TaskObjects = Task.objects.all().order_by('priority');
 		for t in TaskObjects:
 			if (t.project.id == projectid):
 				tasks.append(t)		
