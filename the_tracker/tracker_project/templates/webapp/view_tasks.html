@@ -13,8 +13,15 @@
 			</div>
 			<div class="panel-body">
 		{% for task in tasks %}
-			{% if task.classification == 'M' %}			
-				<a class="list-group-item" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
+			{% if task.classification == 'M' %}
+				{% if task.priority == 1 %}
+					<a class="list-group-item list-group-item-danger" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
+				{% elif task.priority == 2 %}
+					<a class="list-group-item list-group-item-warning" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
+				{% else %}
+					<a class="list-group-item list-group-item-success" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
+				{% endif %}
+								
 				<div class="clear"></div>					
 			{% endif %}
 		{% endfor %}
@@ -27,8 +34,15 @@
 			</div>
 			<div class="panel-body">
 		{% for task in tasks %}
-			{% if task.classification == 'S' %}			
-				<a class="list-group-item" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
+			{% if task.classification == 'S' %}	
+				{% if task.priority == 1 %}
+					<a class="list-group-item list-group-item-danger" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
+				{% elif task.priority == 2 %}
+					<a class="list-group-item list-group-item-warning" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
+				{% else %}
+					<a class="list-group-item list-group-item-success" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
+				{% endif %}
+				
 				<div class="clear"></div>					
 			{% endif %}
 		{% endfor %}
@@ -41,8 +55,15 @@
 			</div>
 			<div class="panel-body">
 		{% for task in tasks %}
-			{% if task.classification == 'C' %}			
-				<a class="list-group-item" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
+			{% if task.classification == 'C' %}	
+				{% if task.priority == 1 %}
+					<a class="list-group-item list-group-item-danger" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
+				{% elif task.priority == 2 %}
+					<a class="list-group-item list-group-item-warning" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
+				{% else %}
+					<a class="list-group-item list-group-item-success" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
+				{% endif %}
+				
 				<div class="clear"></div>					
 			{% endif %}
 		{% endfor %}
@@ -55,8 +76,15 @@
 			</div>
 			<div class="panel-body">
 		{% for task in tasks %}
-			{% if task.classification == 'W' %}			
-				<a class="list-group-item" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
+			{% if task.classification == 'W' %}
+				{% if task.priority == 1 %}
+					<a class="list-group-item list-group-item-danger" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
+				{% elif task.priority == 2 %}
+					<a class="list-group-item list-group-item-warning" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
+				{% else %}
+					<a class="list-group-item list-group-item-success" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
+				{% endif %}
+				
 				<div class="clear"></div>					
 			{% endif %}
 		{% endfor %}
