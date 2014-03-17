@@ -10,6 +10,13 @@ MOSCOW_CHOICE = (
     ('W','Would'),
 )
 
+PRIORITY_CHOICE = (
+    ('1', '1'),
+    ('2', '2'),
+    ('3', '3'),
+)
+
+
 class UserForm(forms.ModelForm):
     username = forms.CharField(help_text="Please enter a username.", widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Username'}))
     firstname = forms.CharField(help_text="Please enter first name.", widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'First Name'}))
@@ -35,7 +42,7 @@ class TaskForm(forms.ModelForm):
     title = forms.CharField(max_length=128, help_text="Please enter the requirement: ", widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Task'}))
     description = forms.CharField(max_length=128, help_text="Description of the requirement: ", widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Description'}))
     classification = forms.ChoiceField(help_text="MoSCoW classification of the requirement.", choices=MOSCOW_CHOICE, widget=forms.Select(attrs={'class': 'form-control', 'placeholder':'MoSCoW'}))
-    priority = forms.IntegerField(help_text="Priority of the requirement.", widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Priority'}))
+    priority = forms.ChoiceField(help_text="Priority of the requirement.", choices=PRIORITY_CHOICE, widget=forms.Select(attrs={'class': 'form-control', 'placeholder':'Priority'}))
     datetime = forms.DateTimeField(help_text="Deadline of requirement", widget=forms.DateTimeInput(attrs={'class': 'form-control', 'placeholder':'YYYY-MM-DD HH:MM'}) )
 
     class Meta:
