@@ -14,17 +14,26 @@
 			<div class="panel-body">
 		{% for task in tasks %}
 			{% if task.classification == 'M' %}
-				{% if task.priority == 1 %}
-					<a class="list-group-item list-group-item-danger" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
-				{% elif task.priority == 2 %}
-					<a class="list-group-item list-group-item-warning" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
-				{% else %}
-					<a class="list-group-item list-group-item-success" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
-				{% endif %}
+				<div id="draggableZone_w_{{forloop.counter0}}" taskmoscow="M" ondrop="drop(event)" ondragover="allowDrop(event)" class="" style="height: 50px">
+				
+					{% if task.priority == 1 %}
+						<a id="task_m_{{task.id}}" taskid="{{task.id}}" taskmoscow="{{task.classification}}" draggable="true" ondragstart="drag(event)" class="list-group-item list-group-item-danger" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
+					{% elif task.priority == 2 %}		
+						<a id="task_m_{{task.id}}" taskid="{{task.id}}" taskmoscow="{{task.classification}}" draggable="true" ondragstart="drag(event)" class="list-group-item list-group-item-warning" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
+					{% else %}
+						<a id="task_m_{{task.id}}" taskid="{{task.id}}" taskmoscow="{{task.classification}}" draggable="true" ondragstart="drag(event)" class="list-group-item list-group-item-success" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
+					{% endif %}
+					
+				</div>
 								
 				<div class="clear"></div>					
 			{% endif %}
 		{% endfor %}
+		{% for i in "xxxxxxxxxxxxxxxxxxxx" %}
+				<div id="draggableZone_w_{{forloop.counter0}}" taskmoscow="M" ondrop="drop(event)" ondragover="allowDrop(event)" class="" style="height: 50px">
+					
+				</div>
+		{% endfor %}		
 			</div>
 		</div>
 		
@@ -35,16 +44,24 @@
 			<div class="panel-body">
 		{% for task in tasks %}
 			{% if task.classification == 'S' %}	
-				{% if task.priority == 1 %}
-					<a class="list-group-item list-group-item-danger" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
-				{% elif task.priority == 2 %}
-					<a class="list-group-item list-group-item-warning" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
-				{% else %}
-					<a class="list-group-item list-group-item-success" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
-				{% endif %}
+				<div id="draggableZone_w_{{forloop.counter0}}" taskmoscow="S" ondrop="drop(event)" ondragover="allowDrop(event)" class="" style="height: 50px">
+				
+					{% if task.priority == 1 %}
+						<a id="task_s_{{task.id}}" taskid="{{task.id}}" taskmoscow="{{task.classification}}" draggable="true" ondragstart="drag(event)" class="list-group-item list-group-item-danger" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
+					{% elif task.priority == 2 %}
+						<a id="task_s_{{task.id}}" taskid="{{task.id}}" taskmoscow="{{task.classification}}" draggable="true" ondragstart="drag(event)" class="list-group-item list-group-item-warning" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
+					{% else %}
+						<a id="task_s_{{task.id}}" taskid="{{task.id}}" taskmoscow="{{task.classification}}" draggable="true" ondragstart="drag(event)" class="list-group-item list-group-item-success" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
+					{% endif %}
+				</div>
 				
 				<div class="clear"></div>					
 			{% endif %}
+		{% endfor %}
+		{% for i in "xxxxxxxxxxxxxxxxxxxx" %}
+				<div id="draggableZone_w_{{forloop.counter0}}" taskmoscow="S" ondrop="drop(event)" ondragover="allowDrop(event)" class="" style="height: 50px">
+					
+				</div>
 		{% endfor %}
 			</div>
 		</div>
@@ -56,16 +73,24 @@
 			<div class="panel-body">
 		{% for task in tasks %}
 			{% if task.classification == 'C' %}	
-				{% if task.priority == 1 %}
-					<a class="list-group-item list-group-item-danger" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
-				{% elif task.priority == 2 %}
-					<a class="list-group-item list-group-item-warning" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
-				{% else %}
-					<a class="list-group-item list-group-item-success" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
-				{% endif %}
+				<div id="draggableZone_w_{{forloop.counter0}}" taskmoscow="C" ondrop="drop(event)" ondragover="allowDrop(event)" class="" style="height: 50px">
+				
+					{% if task.priority == 1 %}
+						<a id="task_c_{{task.id}}" taskid="{{task.id}}" taskmoscow="{{task.classification}}" draggable="true" ondragstart="drag(event)" class="list-group-item list-group-item-danger" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
+					{% elif task.priority == 2 %}
+						<a id="task_c_{{task.id}}" taskid="{{task.id}}" taskmoscow="{{task.classification}}" draggable="true" ondragstart="drag(event)" class="list-group-item list-group-item-warning" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
+					{% else %}
+						<a id="task_c_{{task.id}}" taskid="{{task.id}}" taskmoscow="{{task.classification}}" draggable="true" ondragstart="drag(event)" class="list-group-item list-group-item-success" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
+					{% endif %}
+				</div>
 				
 				<div class="clear"></div>					
 			{% endif %}
+		{% endfor %}
+		{% for i in "xxxxxxxxxxxxxxxxxxxx" %}
+				<div id="draggableZone_w_{{forloop.counter0}}" taskmoscow="C" ondrop="drop(event)" ondragover="allowDrop(event)" class="" style="height: 50px">
+					
+				</div>
 		{% endfor %}
 			</div>
 		</div>
@@ -77,16 +102,24 @@
 			<div class="panel-body">
 		{% for task in tasks %}
 			{% if task.classification == 'W' %}
-				{% if task.priority == 1 %}
-					<a class="list-group-item list-group-item-danger" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
-				{% elif task.priority == 2 %}
-					<a class="list-group-item list-group-item-warning" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
-				{% else %}
-					<a class="list-group-item list-group-item-success" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
-				{% endif %}
+				<div id="draggableZone_w_{{forloop.counter0}}" taskmoscow="W" ondrop="drop(event)" ondragover="allowDrop(event)" class="" style="height: 50px">
+				
+					{% if task.priority == 1 %}
+						<a id="task_w_{{task.id}}" taskid="{{task.id}}" taskmoscow="{{task.classification}}" draggable="true" ondragstart="drag(event)" class="list-group-item list-group-item-danger" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
+					{% elif task.priority == 2 %}
+						<a id="task_w_{{task.id}}" taskid="{{task.id}}" taskmoscow="{{task.classification}}" draggable="true" ondragstart="drag(event)" class="list-group-item list-group-item-warning" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
+					{% else %}
+						<a id="task_w_{{task.id}}" taskid="{{task.id}}" taskmoscow="{{task.classification}}" draggable="true" ondragstart="drag(event)" class="list-group-item list-group-item-success" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
+					{% endif %}
+				</div>
 				
 				<div class="clear"></div>					
 			{% endif %}
+		{% endfor %}
+		{% for i in "xxxxxxxxxxxxxxxxxxxx" %}
+				<div id="draggableZone_w_{{forloop.counter0}}" taskmoscow="W" ondrop="drop(event)" ondragover="allowDrop(event)" class="" style="height: 50px">
+					
+				</div>
 		{% endfor %}
 			</div>
 		</div>

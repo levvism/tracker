@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from forms import UserForm, UserProfileForm, TaskForm, new_project_form
 from models import Project, Task, UserProfile
+from django.contrib.auth.decorators import login_required
 
 def index(request):
 	context = RequestContext(request)
@@ -218,9 +219,7 @@ def add_task(request):
     # Get the context from the request.
     context = RequestContext(request)
     projectid = int(request.GET.get('projectid', '0'))
-    print "MAMAAATIIIIIIIIIIII DEBAAAA projectid=", projectid
     
-    # A HTTP POST?
     if request.method == 'POST':
         form = TaskForm(request.POST)
 
@@ -239,3 +238,17 @@ def add_task(request):
     # Bad form (or form details), no form supplied...
     # Render the form with error messages (if any).
     return render_to_response('webapp/add_requirement.html', {'form': form, 'projectid': projectid}, context)
+   
+@login_required
+def ajax_drag_and_drop_task(request):
+	context = RequestContext(request)
+	if request.method == 'GET':
+		taskid = request.GET.get("taskid", -1);
+		task_moscow = request.GET.get("task_moscow", '');
+		
+		print "TAAAAAAAAAAAASKKK", task_moscow, "IDDDDD", taskid
+		task = Task.objects.get(id = taskid)
+		task.classification = task_moscow
+		task.save()
+		
+	return HttpResponse()

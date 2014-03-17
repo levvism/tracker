@@ -12,6 +12,7 @@ urlpatterns = patterns('',
         url(r'^project/view_tasks$', views.view_tasks, name='all_task'),
         url(r'^project/add_task$', views.add_task, name='add_task'),
         url(r'^project/task$', views.task, name='task'),
+        url(r'^project/drag_and_drop_task$', views.ajax_drag_and_drop_task, name='task'),
 )
         
 

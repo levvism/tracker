@@ -75,9 +75,13 @@
 
 .pnlMustHave, .pnlShouldHave, .pnlCouldHave, .pnlWouldHave
 {	
-	width: 24%;
+	width: 23%;	
+	display: inline-block;
+}
+
+.pnlMustHave div.panel-body, .pnlShouldHave div.panel-body, .pnlCouldHave div.panel-body, .pnlWouldHave div.panel-body
+{
 	height: 500px;
 	overflow-y: scroll;
-	display: inline-block;
 }
 
