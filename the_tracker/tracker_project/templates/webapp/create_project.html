@@ -11,12 +11,15 @@
         {% endfor %}
 
         {% for field in form.visible_fields %}
-            {{ field.errors }}
+            <span class="label label-danger">{{field.errors}}</span>            
             <div class="clear"></div>            
-            <span class="label label-default">{{ field.help_text}}</span>
+            <span class="label label-info">{{field.help_text}}</span>
+            {% if field.name == 'collaborators' %}
+            	<div class="clear"></div>   
+            {% endif %}
             {{ field }}
         {% endfor %}
-
+		<div class="clear"></div> 
         <input type="submit" name="submit" class="btn btn-info navbar-btn" value="Create Project" />
 	</form>
 </div>

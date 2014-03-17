@@ -36,9 +36,9 @@ class TaskForm(forms.ModelForm):
         model = Task
         
 class new_project_form(forms.ModelForm):
-    name = forms.CharField(max_length=128, help_text="Please enter project name: ", widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Project name'}))
-    description = forms.CharField(max_length=256, help_text="Please enter project description: ", widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Project description'}))
-
+    name = forms.CharField(max_length=128, help_text="Please enter project name ", widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Project name'}))
+    description = forms.CharField(max_length=256, help_text="Please enter project description ", widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Project description'}))
+    
     class Meta:
         # Provide an association between the ModelForm and a model
         model = Project

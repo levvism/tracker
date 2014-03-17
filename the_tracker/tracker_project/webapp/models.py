@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 class Project(models.Model):
     name = models.CharField(max_length=128, unique=True)
     description = models.CharField(max_length=256)
+    collaborators = models.ManyToManyField(User)    
     #Project will also have list of developers represented by another model
 
     def __unicode__(self):
@@ -33,12 +34,3 @@ class UserProfile(models.Model):
 
     def __unicode__(self):
         return self.user.username
-        
-        
-# this lets us map users to projects, creating a list of people working on a certain project        
-class UsersProjects(models.Model):
-	user = models.ForeignKey(UserProfile)
-	project = models.ForeignKey(Project)
-
-def __unicode__(self):
-        return self.title

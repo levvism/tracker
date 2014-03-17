@@ -17,10 +17,10 @@
 			</div>
 		</div><!--/.navbar-collapse -->
 		{% else %}
-		<div class="navbar-collapse collapse">
-			Welcome, {{ user.username }}!
-			<a href="/logout/" class="btn btn-info navbar-btn navbar-right">Log out</a>
-			<a href="/about/" class="btn btn-info navbar-btn navbar-right">About</a>
+		<div class="navbar-collapse collapse">			
+			
+			<a href="/logout/" class="btn btn-info navbar-btn navbar-right">Log out, {{user.username}}</a>
+			<a href="/about/" class="btnAbout btn btn-info navbar-btn navbar-right">About</a>
 		</div><!--/.navbar-collapse -->
 		{% endif %}
 	</div>

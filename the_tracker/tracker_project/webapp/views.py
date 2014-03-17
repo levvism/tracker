@@ -4,7 +4,7 @@ from django.shortcuts import render_to_response
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from forms import UserForm, UserProfileForm, TaskForm, new_project_form
-from models import Project, Task, UserProfile, UsersProjects
+from models import Project, Task, UserProfile
 
 def index(request):
 	context = RequestContext(request)
@@ -13,13 +13,8 @@ def index(request):
 	context_dict = {}	
 	
 	if request.user.is_authenticated():
-		UsersprojectsObjects = UsersProjects.objects.all()
-		
-		for up in UsersprojectsObjects:
-			if (up.user.id == request.user.id):
-				user_projects.append(up.project)		
-		
-		context_dict["projects"] = user_projects
+		projects = Project.objects.filter(collaborators = request.user)	
+		context_dict["projects"] = projects
 		
 	
 	return render_to_response('webapp/index.html', context_dict, context)
