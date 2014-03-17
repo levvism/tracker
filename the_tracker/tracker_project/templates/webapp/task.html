@@ -4,7 +4,12 @@
 
 {% block body_block %}
 <div class="hero-unit divTaskPage">
-		<h3><span class="label label-info">Task</span></h3>
+		<ol class="breadcrumb">
+  			<li><a href="/">Projects</a></li>
+  			<li><a href="/project/view_tasks?projectid={{projectid}}">Tasks</a></li>
+  			<li class="active">Task</li>
+		</ol>
+
 		
 	   	<ul class="list-group">
         {% for name in project_names %}

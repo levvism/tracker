@@ -5,7 +5,11 @@
 {% block body_block %}
 <div class="divTasks">
     {% if tasks %}
-    	<h3><span class="label label-info">Tasks</span></h3>
+    	<ol class="breadcrumb">
+  		<li><a href="/">Projects</a></li>
+  		<li class="active">Tasks</li>
+	</ol>
+
 	
 		<div class="panel panel-danger pnlMustHave">
 			<div class="panel-heading">
@@ -15,11 +19,11 @@
 		{% for task in tasks %}
 			{% if task.classification == 'M' %}
 				{% if task.priority == 1 %}
-					<a class="list-group-item list-group-item-danger" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
+					<a class="list-group-item list-group-item-danger" href="/project/task?taskid={{task.id}}&projectid={{projectid}}">{{task.title}}</a>
 				{% elif task.priority == 2 %}
-					<a class="list-group-item list-group-item-warning" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
+					<a class="list-group-item list-group-item-warning" href="/project/task?taskid={{task.id}}&projectid={{projectid}}">{{task.title}}</a>
 				{% else %}
-					<a class="list-group-item list-group-item-success" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
+					<a class="list-group-item list-group-item-success" href="/project/task?taskid={{task.id}}&projectid={{projectid}}">{{task.title}}</a>
 				{% endif %}
 								
 				<div class="clear"></div>					
@@ -36,11 +40,11 @@
 		{% for task in tasks %}
 			{% if task.classification == 'S' %}	
 				{% if task.priority == 1 %}
-					<a class="list-group-item list-group-item-danger" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
+					<a class="list-group-item list-group-item-danger" href="/project/task?taskid={{task.id}}&projectid={{projectid}}">{{task.title}}</a>
 				{% elif task.priority == 2 %}
-					<a class="list-group-item list-group-item-warning" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
+					<a class="list-group-item list-group-item-warning" href="/project/task?taskid={{task.id}}&projectid={{projectid}}">{{task.title}}</a>
 				{% else %}
-					<a class="list-group-item list-group-item-success" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
+					<a class="list-group-item list-group-item-success" href="/project/task?taskid={{task.id}}&projectid={{projectid}}">{{task.title}}</a>
 				{% endif %}
 				
 				<div class="clear"></div>					
@@ -57,11 +61,11 @@
 		{% for task in tasks %}
 			{% if task.classification == 'C' %}	
 				{% if task.priority == 1 %}
-					<a class="list-group-item list-group-item-danger" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
+					<a class="list-group-item list-group-item-danger" href="/project/task?taskid={{task.id}}&projectid={{projectid}}">{{task.title}}</a>
 				{% elif task.priority == 2 %}
-					<a class="list-group-item list-group-item-warning" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
+					<a class="list-group-item list-group-item-warning" href="/project/task?taskid={{task.id}}&projectid={{projectid}}">{{task.title}}</a>
 				{% else %}
-					<a class="list-group-item list-group-item-success" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
+					<a class="list-group-item list-group-item-success" href="/project/task?taskid={{task.id}}&projectid={{projectid}}">{{task.title}}</a>
 				{% endif %}
 				
 				<div class="clear"></div>					
@@ -78,11 +82,11 @@
 		{% for task in tasks %}
 			{% if task.classification == 'W' %}
 				{% if task.priority == 1 %}
-					<a class="list-group-item list-group-item-danger" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
+					<a class="list-group-item list-group-item-danger" href="/project/task?taskid={{task.id}}&projectid={{projectid}}">{{task.title}}</a>
 				{% elif task.priority == 2 %}
-					<a class="list-group-item list-group-item-warning" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
+					<a class="list-group-item list-group-item-warning" href="/project/task?taskid={{task.id}}&projectid={{projectid}}">{{task.title}}</a>
 				{% else %}
-					<a class="list-group-item list-group-item-success" href="/project/task?taskid={{task.id}}">{{task.title}}</a>
+					<a class="list-group-item list-group-item-success" href="/project/task?taskid={{task.id}}&projectid={{projectid}}">{{task.title}}</a>
 				{% endif %}
 				
 				<div class="clear"></div>					

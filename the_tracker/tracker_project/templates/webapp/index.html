@@ -6,7 +6,10 @@
 <div class="hero-unit">
         {% if user.is_authenticated %}			
 		<div class="project_conteiner">
-			<h3><span class="label label-info">Projects</span></h3>
+			<ol class="breadcrumb">
+  				<li class="active">Projects</li>
+			</ol>
+
 			{% include "webapp/projects.html" %}
 		</div>
 		<a href="/newproject/" class="btn btn-info navbar-btn">New Project</a>

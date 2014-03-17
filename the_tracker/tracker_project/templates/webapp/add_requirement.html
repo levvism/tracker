@@ -14,6 +14,11 @@
             {% for hidden in form.hidden_fields %}
                 {{ hidden }}
             {% endfor %}
+		  <ol class="breadcrumb">
+  			<li><a href="/">Projects</a></li>
+  			<li><a href="/project/view_tasks?projectid={{projectid}}">Tasks</a></li>
+  			<li class="active">Add Task</li>
+		  </ol>
 
             {% for field in form.visible_fields %}
                 {{ field.errors }}

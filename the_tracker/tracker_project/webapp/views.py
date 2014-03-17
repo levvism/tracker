@@ -172,6 +172,7 @@ def task(request):
 	context = RequestContext(request)	
 	taskid = int(request.GET.get('taskid', '0'));
 	
+	projectid = int(request.GET.get('projectid', '0'));
 	project_names = []
 	titles = []
 	classifications = []
@@ -194,6 +195,7 @@ def task(request):
 	context_dict["priorities"] = priorities
 	context_dict["classifications"] = classifications
 	context_dict["taskid"] = taskid
+	context_dict["projectid"] = projectid
 	
 	return render_to_response('webapp/task.html', context_dict, context)
 	
