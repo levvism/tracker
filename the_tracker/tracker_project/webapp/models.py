@@ -2,6 +2,14 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
+MOSCOW_CHOICE = (
+    ('M', 'Must'),
+    ('S', 'Should'),
+    ('C', 'Could'),
+    ('W','Would'),
+)
+
+
 #this may need extended to offer more features/details
 class Project(models.Model):
     name = models.CharField(max_length=128, unique=True)
@@ -18,8 +26,9 @@ class Task(models.Model):
     project = models.ForeignKey(Project)
     title = models.CharField(max_length=32)
     description = models.CharField(max_length=256)
-    classification = models.CharField(max_length=1) # refers to the MoSCoW priority of the task
+    classification = models.CharField(max_length=1, choices=MOSCOW_CHOICE) # refers to the MoSCoW priority of the task
     priority = models.IntegerField() # integer priority of task within MoSCoW classification
+    datetime = models.DateTimeField()
 
     def __unicode__(self):
         return self.title
