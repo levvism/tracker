@@ -4,8 +4,6 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
-
-
 from forms import UserForm, UserProfileForm, TaskForm, new_project_form, EditForm
 from models import Project, Task, UserProfile
 
@@ -174,11 +172,13 @@ def task(request):
 	context = RequestContext(request)	
 	taskid = int(request.GET.get('taskid', '0'));
 	
+	projectid = int(request.GET.get('projectid', '0'));
 	project_names = []
 	titles = []
 	classifications = []
 	priorities = []
 	descriptions = []
+	dates = []
 	context_dict = {}
 	if(taskid !=0):
 		TaskObjects = Task.objects.all();
@@ -189,13 +189,16 @@ def task(request):
 				descriptions.append(t.description)
 				classifications.append(t.classification)
 				priorities.append(t.priority)
+				dates.append(t.datetime)
 				
 	context_dict["project_names"] = project_names
 	context_dict["titles"] = titles
 	context_dict["descriptions"] = descriptions
 	context_dict["priorities"] = priorities
 	context_dict["classifications"] = classifications
+	context_dict["dates"] = dates
 	context_dict["taskid"] = taskid
+	context_dict["projectid"] = projectid
 	
 	return render_to_response('webapp/task.html', context_dict, context)
 	
