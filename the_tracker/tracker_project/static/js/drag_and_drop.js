@@ -9,7 +9,7 @@ function drag(ev)
 }
 
 function drop(ev)
-{
+{	
 	ev.preventDefault();
 	ev.target.innerHTML = ""
 	ev.target.className = "";
