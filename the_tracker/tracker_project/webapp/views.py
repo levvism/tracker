@@ -3,6 +3,7 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.core.urlresolvers import reverse
 from forms import UserForm, UserProfileForm, TaskForm, new_project_form
 from models import Project, Task, UserProfile
 
@@ -216,7 +217,9 @@ def view_tasks(request):
 def add_task(request):
     # Get the context from the request.
     context = RequestContext(request)
-
+    projectid = int(request.GET.get('projectid', '0'))
+    print "MAMAAATIIIIIIIIIIII DEBAAAA projectid=", projectid
+    
     # A HTTP POST?
     if request.method == 'POST':
         form = TaskForm(request.POST)
@@ -225,10 +228,7 @@ def add_task(request):
         if form.is_valid():
             # Save the new category to the database.
             form.save(commit=True)
-
-            # Now call the index() view.
-            # The user will be shown the homepage.
-            return task(request)
+            return HttpResponseRedirect('/project/view_tasks?projectid=' + str(projectid))
         else:
             # The supplied form contained errors - just print them to the terminal.
             print form.errors
@@ -238,4 +238,4 @@ def add_task(request):
 
     # Bad form (or form details), no form supplied...
     # Render the form with error messages (if any).
-    return render_to_response('webapp/add_requirement.html', {'form': form}, context)
+    return render_to_response('webapp/add_requirement.html', {'form': form, 'projectid': projectid}, context)

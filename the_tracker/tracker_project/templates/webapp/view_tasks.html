@@ -91,14 +91,13 @@
 			</div>
 		</div>
 		<div class="clear"></div>		
-		
     {% else %}
         <span class="label label-danger">No tasks to be displayed for that project.</span>
     {% endif %}
     
     {% if projectid %}
     	<div class="clear"></div>
-    	<a href="/project/add_task?{{projectid}}" class="btn btn-info navbar-btn">Add Task</a>
+    	<a href="/project/add_task?projectid={{projectid}}" class="btn btn-info navbar-btn">Add Task</a>
     {% else %}
         <span class="label label-danger">Incorrect url.</span>
     {% endif %}
