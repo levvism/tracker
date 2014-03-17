@@ -4,7 +4,12 @@
 
 {% block body_block %}
 <div class="hero-unit divTaskPage">
-		<h3><span class="label label-info">Task</span></h3>
+		<ol class="breadcrumb">
+  			<li><a href="/">Projects</a></li>
+  			<li><a href="/project/view_tasks?projectid={{projectid}}">Tasks</a></li>
+  			<li class="active">Task</li>
+		</ol>
+
 		
 	   	<ul class="list-group">
         {% for name in project_names %}
@@ -80,5 +85,27 @@
     	{% else %}
         	<strong>No priority of the task to be displayed.</strong>
    		{% endif %}
+   		
+   		{% if dates %}
+	   		<ul class="list-group">
+        	{% for d in dates %}
+	        	<div class="panel panel-default">
+  				<div class="panel-heading">Date</div>
+  				<div class="panel-body">
+    				{{d}}
+  				</div>
+			</div>                               
+        	{% endfor %}
+    		</ul>
+    	
+    	{% else %}
+        	<strong>No date of the task to be displayed.</strong>
+   		{% endif %}
+
+   		<a href="/project/edit_task?taskid={{taskid}}" class="btn btn-info navbar-btn">Edit Task</a>
+
+   		<a href="/project/history_task?taskid={{taskid}}" class="btn btn-info navbar-btn">History</a>
+
 </div>
 {% endblock %}
+

@@ -1,10 +1,10 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
-from forms import UserForm, UserProfileForm, TaskForm, new_project_form
+from forms import UserForm, UserProfileForm, TaskForm, new_project_form, EditForm
 from models import Project, Task, UserProfile
 from django.contrib.auth.decorators import login_required
 
@@ -173,11 +173,13 @@ def task(request):
 	context = RequestContext(request)	
 	taskid = int(request.GET.get('taskid', '0'));
 	
+	projectid = int(request.GET.get('projectid', '0'));
 	project_names = []
 	titles = []
 	classifications = []
 	priorities = []
 	descriptions = []
+	dates = []
 	context_dict = {}
 	if(taskid !=0):
 		TaskObjects = Task.objects.all();
@@ -188,13 +190,16 @@ def task(request):
 				descriptions.append(t.description)
 				classifications.append(t.classification)
 				priorities.append(t.priority)
+				dates.append(t.datetime)
 				
 	context_dict["project_names"] = project_names
 	context_dict["titles"] = titles
 	context_dict["descriptions"] = descriptions
 	context_dict["priorities"] = priorities
 	context_dict["classifications"] = classifications
+	context_dict["dates"] = dates
 	context_dict["taskid"] = taskid
+	context_dict["projectid"] = projectid
 	
 	return render_to_response('webapp/task.html', context_dict, context)
 	
@@ -238,7 +243,7 @@ def add_task(request):
     # Bad form (or form details), no form supplied...
     # Render the form with error messages (if any).
     return render_to_response('webapp/add_requirement.html', {'form': form, 'projectid': projectid}, context)
-   
+  
 @login_required
 def ajax_drag_and_drop_task(request):
 	context = RequestContext(request)
@@ -252,3 +257,34 @@ def ajax_drag_and_drop_task(request):
 		task.save()
 		
 	return HttpResponse()
+
+def edit_task(request):
+    # Get the context from the request.
+    context = RequestContext(request)
+    taskid = int(request.GET.get('taskid', '0'))
+    task = get_object_or_404(Task, pk=taskid)
+    
+    
+    # A HTTP POST?
+    if request.method == 'POST':
+        form = EditForm(request.POST, instance=task)
+
+        # Have we been provided with a valid form?
+        if form.is_valid():
+            # Save the new category to the database.
+            form.save(commit=True)
+            return HttpResponseRedirect('/project/task?taskid=' + str(taskid))
+        else:
+            # The supplied form contained errors - just print them to the terminal.
+            print form.errors
+    else:
+        # If the request was not a POST, display the form to enter details.
+        form = EditForm(instance=task)
+
+    # Bad form (or form details), no form supplied...
+    # Render the form with error messages (if any).
+    return render_to_response('webapp/edit_task.html', {'form': form, 'taskid': taskid}, context)
+
+def history_task(request):
+    context = RequestContext(request)
+    return render_to_response('webapp/history_task.html', {}, context)
