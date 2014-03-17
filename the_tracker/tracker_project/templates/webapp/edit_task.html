@@ -1,0 +1,28 @@
+{% extends 'webapp/base.html' %}
+
+{% block title %} Edit Page {% endblock %}
+
+{% block body_block %}
+<div class="hero-unit divEditTask">
+		<h3><span class="label label-info">Edit Task</span></h3>
+		
+		<form id="edit_form" method="post" action="/project/edit_task?taskid={{taskid}}">
+
+            {% csrf_token %}
+            {% for hidden in form.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
+
+            {% for field in form.visible_fields %}
+                {{ field.errors }}
+				<div class="clear"></div>            
+            	<span class="label label-info">{{field.help_text}}</span>
+                {{ field }}
+            {% endfor %}
+            <br>
+
+            <input type="submit" name="submit" value="Edit" />
+        </form>
+        
+</div>
+{% endblock %}

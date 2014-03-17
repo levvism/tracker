@@ -34,3 +34,10 @@ class UserProfile(models.Model):
 
     def __unicode__(self):
         return self.user.username
+    
+# class HistoryTask(models.Model):
+#     task = models.ForeignKey(Task)
+#     date = models.DateField(max_length=12)
+#     
+#     def __unicode__(self):
+#         return self.date

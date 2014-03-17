@@ -80,5 +80,9 @@
     	{% else %}
         	<strong>No priority of the task to be displayed.</strong>
    		{% endif %}
-</div>
+   		
+   		<a href="/project/edit_task?taskid={{taskid}}" class="btn btn-info navbar-btn">Edit Task</a>
+
+   		<a href="/project/history_task?taskid={{taskid}}" class="btn btn-info navbar-btn">History</a>
+
 {% endblock %}

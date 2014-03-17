@@ -1,10 +1,12 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
-from forms import UserForm, UserProfileForm, TaskForm, new_project_form
+
+
+from forms import UserForm, UserProfileForm, TaskForm, new_project_form, EditForm
 from models import Project, Task, UserProfile
 
 def index(request):
@@ -239,3 +241,35 @@ def add_task(request):
     # Bad form (or form details), no form supplied...
     # Render the form with error messages (if any).
     return render_to_response('webapp/add_requirement.html', {'form': form, 'projectid': projectid}, context)
+
+
+def edit_task(request):
+    # Get the context from the request.
+    context = RequestContext(request)
+    taskid = int(request.GET.get('taskid', '0'))
+    task = get_object_or_404(Task, pk=taskid)
+    
+    
+    # A HTTP POST?
+    if request.method == 'POST':
+        form = EditForm(request.POST, instance=task)
+
+        # Have we been provided with a valid form?
+        if form.is_valid():
+            # Save the new category to the database.
+            form.save(commit=True)
+            return HttpResponseRedirect('/project/task?taskid=' + str(taskid))
+        else:
+            # The supplied form contained errors - just print them to the terminal.
+            print form.errors
+    else:
+        # If the request was not a POST, display the form to enter details.
+        form = EditForm(instance=task)
+
+    # Bad form (or form details), no form supplied...
+    # Render the form with error messages (if any).
+    return render_to_response('webapp/edit_task.html', {'form': form, 'taskid': taskid}, context)
+
+def history_task(request):
+    context = RequestContext(request)
+    return render_to_response('webapp/history_task.html', {}, context)
