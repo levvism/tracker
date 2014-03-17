@@ -20,6 +20,13 @@
                  making everything look neater. -->
             {{ user_form.as_p }}
             {{ profile_form.as_p }}
+            
+            {% for field in form.visible_fields %}
+                {{ field.errors }}
+				<div class="clear"></div>            
+            	<span class="label label-info">{{field.help_text}}</span>
+                {{ field }}
+            {% endfor %}
 
             <!-- Provide a button to click to submit the form. -->
             <input type="submit" name="submit" class="btn btn-info navbar-btn" value="Register" />

@@ -4,6 +4,81 @@
 
 {% block body_block %}
 <div class="hero-unit divTaskPage">
-		<h3><span class="label label-info">Task name</span></h3>
+		<h3><span class="label label-info">Task</span></h3>
+		
+	   	<ul class="list-group">
+        {% for name in project_names %}
+	       	<div class="panel panel-default">
+  				<div class="panel-heading">Project Name</div>
+  				<div class="panel-body">
+    				{{name}}
+  				</div>
+			</div>                        
+        {% endfor %}
+    	</ul>	
+    	
+   		{% if titles %}
+	   		<ul class="list-group">
+        	{% for title in titles %}
+	        	<div class="panel panel-default">
+  				<div class="panel-heading">Title</div>
+  				<div class="panel-body">
+    				{{title}}
+  				</div>
+			</div>                            
+        	{% endfor %}
+    		</ul>
+    	
+    	{% else %}
+        	<strong>No title of the task to be displayed.</strong>
+   		{% endif %}
+   		
+   		{% if descriptions %}
+	   		<ul class="list-group">
+        	{% for desc in descriptions %}
+	        	<div class="panel panel-default">
+  				<div class="panel-heading">Description</div>
+  				<div class="panel-body">
+    				{{desc}}
+  				</div>
+			</div>                              
+        	{% endfor %}
+    		</ul>
+    	
+    	{% else %}
+        	<strong>No description of the task to be displayed.</strong>
+   		{% endif %}
+   		
+   		{% if classifications %}
+	   		<ul class="list-group">
+        	{% for cla in classifications %}
+	        	<div class="panel panel-default">
+  				<div class="panel-heading">MoSCoW Classification</div>
+  				<div class="panel-body">
+    				{{cla}}
+  				</div>
+			</div>                               
+        	{% endfor %}
+    		</ul>
+    	
+    	{% else %}
+        	<strong>No classification of the task to be displayed.</strong>
+   		{% endif %}
+   		
+   		{% if priorities %}
+	   		<ul class="list-group">
+        	{% for pri in priorities %}
+	        	<div class="panel panel-default">
+  				<div class="panel-heading">Priority</div>
+  				<div class="panel-body">
+    				{{pri}}
+  				</div>
+			</div>                               
+        	{% endfor %}
+    		</ul>
+    	
+    	{% else %}
+        	<strong>No priority of the task to be displayed.</strong>
+   		{% endif %}
 </div>
 {% endblock %}

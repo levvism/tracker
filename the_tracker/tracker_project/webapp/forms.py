@@ -4,11 +4,11 @@ from webapp.models import UserProfile, Task, Project
 
 
 class UserForm(forms.ModelForm):
-    username = forms.CharField(help_text="Please enter a username.")
-    firstname = forms.CharField(help_text="Please enter first name.")
-    lastname = forms.CharField(help_text="Please enter last name.")
-    email = forms.CharField(help_text="Please enter your email.")
-    password = forms.CharField(widget=forms.PasswordInput(), help_text="Please enter a password.")
+    username = forms.CharField(help_text="Please enter a username.", widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Username'}))
+    firstname = forms.CharField(help_text="Please enter first name.", widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'First Name'}))
+    lastname = forms.CharField(help_text="Please enter last name.", widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Last Name'}))
+    email = forms.CharField(help_text="Please enter your email.", widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'email'}))
+    password = forms.CharField(help_text="Please enter a password.", widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'password'}))
 
     class Meta:
         model = User
@@ -17,18 +17,18 @@ class UserForm(forms.ModelForm):
         
 class UserProfileForm(forms.ModelForm):
 
-    website = forms.URLField(help_text="Please enter your website.", required=False)
-    picture = forms.ImageField(help_text="Select a profile image to upload.", required=False)
+    website = forms.URLField(help_text="Please enter your website.",widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'website'}), required=False)
+    picture = forms.ImageField(help_text="Select a profile image to upload.", widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'picture'}), required=False)
 
     class Meta:
         model = UserProfile
         fields = ('website', 'picture')
 
 class TaskForm(forms.ModelForm):
-    title = forms.CharField(max_length=128, help_text="Please enter the requirement: ")
-    description = forms.CharField(max_length=128, help_text="Description of the requirement: ")
-    classification = forms.CharField(max_length=128, help_text="MoSCoW classification of the requirement.")
-    priority = forms.IntegerField(help_text="Priority of the requirement.")
+    title = forms.CharField(max_length=128, help_text="Please enter the requirement: ", widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Task'}))
+    description = forms.CharField(max_length=128, help_text="Description of the requirement: ", widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Description'}))
+    classification = forms.CharField(max_length=128, help_text="MoSCoW classification of the requirement.", widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'MoSCoW'}))
+    priority = forms.IntegerField(help_text="Priority of the requirement.", widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Priority'}))
 
     # An inline class to provide additional information on the form.
     class Meta:
@@ -42,3 +42,4 @@ class new_project_form(forms.ModelForm):
     class Meta:
         # Provide an association between the ModelForm and a model
         model = Project
+        

@@ -13,7 +13,8 @@
 
             {% for field in form.visible_fields %}
                 {{ field.errors }}
-                {{ field.help_text}}
+				<div class="clear"></div>            
+            	<span class="label label-info">{{field.help_text}}</span>
                 {{ field }}
             {% endfor %}
 

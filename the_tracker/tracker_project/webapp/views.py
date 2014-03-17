@@ -169,8 +169,32 @@ def project(request):
 
 def task(request):
 	context = RequestContext(request)	
+	taskid = int(request.GET.get('taskid', '0'));
 	
-	return render_to_response('webapp/task.html', {}, context)
+	project_names = []
+	titles = []
+	classifications = []
+	priorities = []
+	descriptions = []
+	context_dict = {}
+	if(taskid !=0):
+		TaskObjects = Task.objects.all();
+		for t in TaskObjects:
+			if(t.id == taskid):
+				project_names.append(t.project.name)
+				titles.append(t.title)
+				descriptions.append(t.description)
+				classifications.append(t.classification)
+				priorities.append(t.priority)
+				
+	context_dict["project_names"] = project_names
+	context_dict["titles"] = titles
+	context_dict["descriptions"] = descriptions
+	context_dict["priorities"] = priorities
+	context_dict["classifications"] = classifications
+	context_dict["taskid"] = taskid
+	
+	return render_to_response('webapp/task.html', context_dict, context)
 	
 def view_tasks(request):
 	context = RequestContext(request)	
