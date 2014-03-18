@@ -15,7 +15,20 @@
 			<a href="/newproject/" class="btn btn-info navbar-btn">New Project</a>
 		</div>
 		{% else %}
-		<h1>Tracker says... hello world!</h1>
+		<div class="divLongin">
+			<form id="login_form" method="post" action="/login/">
+		            {% csrf_token %}
+			  <div class="form-group">
+			    <label class="sr-only" for="txtUsername">Username</label>
+			    <input type="text" name="username" class="form-control" id="txtUsername" size="50" placeholder="Enter username">
+			  </div>
+			  <div class="form-group">
+			    <label class="sr-only" for="txtPassword">Password</label>
+			    <input type="password" name="password" class="form-control" id="txtPassword" size="50" placeholder="Password">
+			  </div>
+			  <input type="submit" class="btn btn-info navbar-btn" value="Login" />
+			</form>
+		</div>
 		{% endif %}
 		
 </div>
