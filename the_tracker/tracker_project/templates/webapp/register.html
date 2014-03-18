@@ -3,21 +3,22 @@
 {% block title %} Register {% endblock %}
 
 {% block body_block %}
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">Register</h3>
+		</div>
+		<div class="panel-body">
 
         {% if registered %}
         Tracker says: <strong>thank you for registering!</strong>
-        <a href="/">Return to the homepage.</a><br />
+        <a href="/" class="btn btn-info navbar-btn">Return to the homepage.</a>
+        <div class="clear"></div>
         {% else %}
-        Tracker says: <strong>register here!</strong><br />
 
         <form id="user_form" method="post" action="/register/"
                 enctype="multipart/form-data">
 
             {% csrf_token %}
-
-            <!-- Display each form. The as_p method wraps each element in a paragraph
-                 (<p>) element. This ensures each element appears on a new line,
-                 making everything look neater. -->
             {{ user_form.as_p }}
             {{ profile_form.as_p }}
             
@@ -32,5 +33,7 @@
             <input type="submit" name="submit" class="btn btn-info navbar-btn" value="Register" />
         </form>
         {% endif %}
+      </div>
+	</div>
 
 {% endblock %}
