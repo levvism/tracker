@@ -29,7 +29,6 @@ class Task(models.Model):
     classification = models.CharField(max_length=1, choices=MOSCOW_CHOICE) # refers to the MoSCoW priority of the task
     priority = models.IntegerField() # integer priority of task within MoSCoW classification
     datetime = models.DateTimeField()
-    created_date = models.DateTimeField(auto_now_add=True)    
 
     def __unicode__(self):
         return self.title
