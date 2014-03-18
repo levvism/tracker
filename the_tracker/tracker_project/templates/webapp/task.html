@@ -102,9 +102,9 @@
         	<strong>No date of the task to be displayed.</strong>
    		{% endif %}
 
-   		<a href="/project/edit_task?taskid={{taskid}}" class="btn btn-info navbar-btn">Edit Task</a>
+   		<a href="/project/edit_task?taskid={{taskid}}&projectid={{projectid}}" class="btn btn-info navbar-btn">Edit Task</a>
 
-   		<a href="/project/history_task?taskid={{taskid}}" class="btn btn-info navbar-btn">History</a>
+   		<a href="/project/history_task?taskid={{taskid}}&projectid={{projectid}}" class="btn btn-info navbar-btn">History</a>
 
 </div>
 {% endblock %}

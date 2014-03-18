@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from webapp.models import UserProfile, Task, Project
+from webapp.models import UserProfile, Task, Project, HistoryTask
 
 
 MOSCOW_CHOICE = (
@@ -47,7 +47,7 @@ class TaskForm(forms.ModelForm):
 
     class Meta:
         model = Task
-
+        #fields = ('title', 'description', 'classification', 'priority', 'datetime')
         
 
         
@@ -68,5 +68,5 @@ class EditForm(forms.ModelForm):
     # An inline class to provide additional information on the form.
     class Meta:
         # Provide an association between the ModelForm and a model
-        model = Task
+        model = HistoryTask
         

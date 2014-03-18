@@ -251,7 +251,6 @@ def ajax_drag_and_drop_task(request):
 		taskid = request.GET.get("taskid", -1);
 		task_moscow = request.GET.get("task_moscow", '');
 		
-		print "TAAAAAAAAAAAASKKK", task_moscow, "IDDDDD", taskid
 		task = Task.objects.get(id = taskid)
 		task.classification = task_moscow
 		task.save()
@@ -263,9 +262,8 @@ def edit_task(request):
     context = RequestContext(request)
     taskid = int(request.GET.get('taskid', '0'))
     task = get_object_or_404(Task, pk=taskid)
-    
-    
-    # A HTTP POST?
+
+
     if request.method == 'POST':
         form = EditForm(request.POST, instance=task)
 
@@ -273,6 +271,8 @@ def edit_task(request):
         if form.is_valid():
             # Save the new category to the database.
             form.save(commit=True)
+            
+            
             return HttpResponseRedirect('/project/task?taskid=' + str(taskid))
         else:
             # The supplied form contained errors - just print them to the terminal.

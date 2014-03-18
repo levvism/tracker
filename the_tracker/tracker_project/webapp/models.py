@@ -29,6 +29,7 @@ class Task(models.Model):
     classification = models.CharField(max_length=1, choices=MOSCOW_CHOICE) # refers to the MoSCoW priority of the task
     priority = models.IntegerField() # integer priority of task within MoSCoW classification
     datetime = models.DateTimeField()
+    created_date = models.DateTimeField(auto_now_add=True)    
 
     def __unicode__(self):
         return self.title
@@ -44,9 +45,10 @@ class UserProfile(models.Model):
     def __unicode__(self):
         return self.user.username
     
-# class HistoryTask(models.Model):
-#     task = models.ForeignKey(Task)
-#     date = models.DateField(max_length=12)
-#     
-#     def __unicode__(self):
-#         return self.date
+    
+class HistoryTask(models.Model):
+    task = models.ForeignKey(Task)
+    modified_date = models.DateTimeField(auto_now_add=True)
+
+    def __unicode__(self):
+        return self.task
