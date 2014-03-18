@@ -4,9 +4,14 @@
 
 {% block body_block %}
 <div class="hero-unit divEditTask">
-		<h3><span class="label label-info">Edit Task</span></h3>
+		<ol class="breadcrumb">
+  			<li><a href="/">Projects</a></li>
+  			<li><a href="/project/view_tasks?projectid={{projectid}}">Tasks</a></li>
+  			<li><a href="/project/task?taskid={{taskid}}">Task</a></li>
+  			<li class="active">Edit Task</li>
+		</ol>
 		
-		<form id="edit_form" method="post" action="/project/edit_task?taskid={{taskid}}">
+		<form id="edit_form" method="post" action="/project/edit_task?taskid={{taskid}}&projectid={{projectid}}">
 
             {% csrf_token %}
             {% for hidden in form.hidden_fields %}
@@ -21,7 +26,9 @@
             {% endfor %}
             <br>
 
-            <input type="submit" name="submit" class="btn btn-info navbar-btn" value="Save" />
+
+            <input type="submit" name="submit" value="Submit Changes" />
+
         </form>
         
 </div>
